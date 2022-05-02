@@ -1,17 +1,11 @@
-// import logo from './logo.svg';
-// import './App.css';
-import './main.css';
-
-const Li = ({ children }) => {
-  return <li className="clase-li">{children}</li>;
-};
+import Button from './Button';
 
 const App = () => {
-  // const valor = 'triste';
   return (
-    <ul className="clase-css">
-      <Li estado={'feliz'}>valor de li</Li>
-    </ul>
+    <div>
+      <h1 onClick={(e) => console.log('click', e)}>Hola mundo</h1>
+      <Button onClick={() => console.log('clickeado')}>Enviar</Button>
+    </div>
   );
 };
 
