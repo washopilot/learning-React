@@ -1,10 +1,6 @@
 import Button from './Button';
 
-const arr = {
-  key1: 'chanchito feliz',
-  key2: 'chanchito triste',
-  key3: 'chanchito emocionado',
-};
+const arr = ['chanchito feliz', 'chanchito triste', 'chanchito emocionado'];
 
 const App = () => {
   const miVariable = false;
@@ -12,8 +8,8 @@ const App = () => {
   return (
     <div>
       <h1 onClick={(e) => console.log('click', e)}>Hola mundo</h1>
-      {Object.keys(arr).map((key, idx) => (
-        <p key={idx}>{arr[key]}</p>
+      {arr.map((el, idx) => (
+        <p key={idx}>{el}</p>
       ))}
       <Button onClick={() => console.log('clickeado')}>Enviar</Button>
     </div>
