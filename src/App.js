@@ -11,9 +11,13 @@ class Button extends React.Component {
     console.log('componentDidMount de Button');
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate de Button', prevProps, prevState);
+  }
+
   render() {
     console.log('ejecutando método render de button');
-    return <button>Enviar</button>;
+    return <button onClick={() => this.setState({ prop: 2 })}>Enviar</button>;
   }
 }
 
