@@ -21,7 +21,7 @@ class Button extends React.Component {
 
   render() {
     console.log('ejecutando método render de button');
-    return <button onClick={() => this.setState({ prop: 2 })}>Enviar</button>;
+    return <button onClick={() => this.setState({ prop: 2 })}>Enviar en Button</button>;
   }
 }
 
@@ -32,7 +32,7 @@ class App extends React.Component {
     return (
       <div>
         <p>Hola mundo</p>
-        {this.state.valor === 3 && <Button chanchito="feliz" />}
+        {this.state.valor === 3 && <Button chanchito="feliz"></Button>}
         <button className={`${this.state.valor}`} onClick={() => this.setState({ valor: 2 })}>
           Enviar en App
         </button>
