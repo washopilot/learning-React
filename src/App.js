@@ -15,6 +15,10 @@ class Button extends React.Component {
     console.log('componentDidUpdate de Button', prevProps, prevState);
   }
 
+  componentWillUnmount() {
+    console.log('desmontando componente de Button', this.props, this.state);
+  }
+
   render() {
     console.log('ejecutando método render de button');
     return <button onClick={() => this.setState({ prop: 2 })}>Enviar</button>;
@@ -28,7 +32,7 @@ class App extends React.Component {
     return (
       <div>
         <p>Hola mundo</p>
-        <Button chanchito="feliz" />
+        {this.state.valor === 3 ? <Button chanchito="feliz" /> : null}
         <button className={`${this.state.valor}`} onClick={() => this.setState({ valor: 2 })}>
           Enviar en App
         </button>
