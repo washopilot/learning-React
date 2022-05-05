@@ -32,7 +32,7 @@ class App extends React.Component {
     return (
       <div>
         <p>Hola mundo</p>
-        {this.state.valor === 3 ? <Button chanchito="feliz" /> : null}
+        {this.state.valor === 3 && <Button chanchito="feliz" />}
         <button className={`${this.state.valor}`} onClick={() => this.setState({ valor: 2 })}>
           Enviar en App
         </button>
