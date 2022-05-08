@@ -1,19 +1,21 @@
 import { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Productos from './components/Productos';
 
 class App extends Component {
   state = {
     productos: [
       { name: 'Tomate', price: 1500, img: '/productos/tomate.jpg' },
       { name: 'Arbejas', price: 2500, img: '/productos/arbejas.jpg' },
-      { name: 'Tomate', price: 1500, img: '/productos/lechigas.jpg' },
+      { name: 'Lechuga', price: 1500, img: '/productos/lechugas.jpg' },
     ],
   };
   render() {
     return (
       <div>
-        <p>Hola mundo</p>
+        <Productos
+          agregarAlCarro={() => console.log('No hace nada')}
+          productos={this.state.productos}
+        />
       </div>
     );
   }
