@@ -1,24 +1,35 @@
 import React, { Component } from 'react';
 
 class Input extends Component {
-  state = { valor: '' };
-
-  handleChange = (value) => {
-    this.setState({ valor: value });
-  };
-
   render() {
-    return <input value={this.state.value} onChange={(e) => this.handleChange(e.target.value)}></input>;
+    return (
+      <input value={this.props.value} onChange={this.props.onChange}></input>
+    );
   }
 }
 
 class App extends Component {
+  state = {
+    nombre: '',
+    apellido: '',
+  };
+
+  updateValues = (prop, value) => {
+    this.setState({ [prop]: value });
+  };
+
   render() {
     return (
       <p>
-        Nombre completo:
-        <Input />
-        <Input />
+        Nombre completo: {`${this.state.nombre} ${this.state.apellido}`}
+        <Input
+          value={this.state.nombre}
+          onChange={(e) => this.updateValues('nombre', e.target.value)}
+        />
+        <Input
+          value={this.state.apellido}
+          onChange={(e) => this.updateValues('apellido', e.target.value)}
+        />
       </p>
     );
   }
