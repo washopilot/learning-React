@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 const useContador = (inicial) => {
   const [contador, setContador] = useState(inicial);
@@ -10,10 +10,6 @@ const useContador = (inicial) => {
 
 const App = () => {
   const [contador, incrementar] = useContador(0);
-  useEffect(() => {
-    document.title = contador;
-    console.log('Soy un efecto');
-  }, [contador]);
   return (
     <div>
       Contador:{contador}
