@@ -1,46 +1,34 @@
-import React, { Component, useEffect, useState } from 'react';
+import { useState, useReducer } from 'react';
 
-const useContador = (inicial) => {
-  const [contador, setContador] = useState(inicial);
-  const incrementar = () => {
-    setContador(contador + 1);
-  };
-  return [contador, incrementar];
+// const state = { contador: 0 }
+// action = {type: string, payload: any}
+
+const inicial = { contador: 10 };
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'incrementar':
+      return { contador: state.contador + 1 };
+    case 'decrementar':
+      return { contador: state.contador - 1 };
+    case 'set':
+      return { contador: action.payload };
+    default:
+      return state;
+  }
 };
 
-// const Interval = ({ contador }) => {
-//   useEffect(() => {
-//     const i = setInterval(() => console.log(contador), 1000);
-//     return () => clearInterval(i);  // Desuscribe el setInterval
-//   }, [contador]);
-//   return <p>Intervalo</p>;
-// };
-
-class Interval extends Component {
-  intervalo = '';
-  componentDidMount() {
-    this.intervalo = setInterval(() => console.log(this.props.contador), 1000);
-  }
-  componentWillUnmount() {
-    clearInterval(this.intervalo);
-  }
-  render() {
-    return <p>Intervalo</p>;
-  }
-}
-
 const App = () => {
-  const [contador, incrementar] = useContador(0);
-  useEffect(() => {
-    document.title = contador;
-    console.log('Soy un efecto');
-  }, [contador]);
+  const [state, dispatch] = useReducer(reducer, inicial);
+  const [valor, setValor] = useState(0);
   return (
     <div>
-      Contador:{contador}
-      <button onClick={incrementar}>Incrementar</button>
-      <Interval contador={contador}></Interval>
+      Contador: {state.contador}
+      <input value={valor} onChange={(e) => setValor(e.target.value)} />
+      <button onClick={() => dispatch({ type: 'incrementar' })}>Más</button>
+      <button onClick={() => dispatch({ type: 'decrementar' })}>Menos</button>
+      <button onClick={() => dispatch({ type: 'set', payload: Number(valor) })}>Set</button>
     </div>
   );
 };
+
 export default App;
