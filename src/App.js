@@ -1,27 +1,22 @@
 import React from 'react';
 
 const App = () => {
-  const input = React.useRef();
-  const file = React.useRef();
-  const submit = () => {
-    console.log(input.current.value);
-    console.log(file.current.files[0]);
-    const form = new FormData();
-    form.append('archivo', file.current.files[0]);
-    form.append('campo', input.current.value);
-    console.log(form);
-    fetch('/lala', { method: 'POST', body: form });
+  const submit = (e) => {
+    e.preventDefault();
+    const data = Array.from(new FormData(e.target));
+    console.log(Object.fromEntries(data));
   };
 
   return (
-    <div>
+    <form onSubmit={submit}>
       <div>
-        <span>Lala</span>
-        <input type={'text'} name="campo" ref={input}></input>
-        <input type={'file'} ref={file}></input>
+        <span>lala</span>
+        <input name="campo-1" />
       </div>
-      <input type={'submit'} value="Enviar" onClick={submit}></input>
-    </div>
+      <input name="campo-2" />
+      <input type={'file'} name="archivo" />
+      <input type="submit" value="Enviar" />
+    </form>
   );
 };
 
